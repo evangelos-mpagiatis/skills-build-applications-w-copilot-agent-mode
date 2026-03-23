@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'octofit_tracker',
 ]
 
+AUTH_USER_MODEL = 'octofit_tracker.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
