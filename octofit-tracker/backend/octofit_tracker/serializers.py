@@ -34,10 +34,12 @@ class UserSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     id = ObjectIdStringField(read_only=True)
     user = UserSerializer(read_only=True)
+    activity_type = serializers.CharField(source='type')
+    date = serializers.DateTimeField(source='created_at', read_only=True)
 
     class Meta:
         model = Activity
-        fields = '__all__'
+        fields = ['id', 'user', 'activity_type', 'duration', 'distance', 'date']
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
