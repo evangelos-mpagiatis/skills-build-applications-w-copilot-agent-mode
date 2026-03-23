@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`;
+import { API_BASE_URL } from '../config';
+const API_URL = `${API_BASE_URL}/api/users/`;
 
 function Users() {
   const [users, setUsers] = useState([]);
