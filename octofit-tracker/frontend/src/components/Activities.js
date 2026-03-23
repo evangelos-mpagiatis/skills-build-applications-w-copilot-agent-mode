@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../config';
 
-const API_URL = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`;
+const API_URL = `${BASE_URL}/api/activities/`;
 
 function Activities() {
   const [activities, setActivities] = useState([]);
