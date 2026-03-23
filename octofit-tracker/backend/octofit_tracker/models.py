@@ -9,6 +9,16 @@ class Team(models.Model):
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='members')
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='octofit_user_set',
+        blank=True,
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='octofit_user_set',
+        blank=True,
+    )
 
 class Activity(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='activities')
