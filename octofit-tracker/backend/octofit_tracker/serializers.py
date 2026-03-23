@@ -16,10 +16,11 @@ class ObjectIdStringField(serializers.Field):
 
 class TeamSerializer(serializers.ModelSerializer):
     id = ObjectIdStringField(read_only=True)
+    members = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Team
-        fields = '__all__'
+        fields = ['id', 'name', 'members']
 
 
 class UserSerializer(serializers.ModelSerializer):
