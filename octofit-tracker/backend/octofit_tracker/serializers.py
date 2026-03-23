@@ -34,10 +34,12 @@ class UserSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     id = ObjectIdStringField(read_only=True)
     user = UserSerializer(read_only=True)
+    activity_type = serializers.CharField(source='type')
+    date = serializers.DateTimeField(source='created_at', read_only=True)
 
     class Meta:
         model = Activity
-        fields = '__all__'
+        fields = ['id', 'user', 'activity_type', 'duration', 'distance', 'date']
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
@@ -51,6 +53,11 @@ class WorkoutSerializer(serializers.ModelSerializer):
 class LeaderboardSerializer(serializers.ModelSerializer):
     id = ObjectIdStringField(read_only=True)
     user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        source='user',
+        write_only=True
+    )
     class Meta:
         model = Leaderboard
         fields = '__all__'
