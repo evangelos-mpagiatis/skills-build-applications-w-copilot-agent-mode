@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BASE_URL from '../config';
 
-const API_URL = `${BASE_URL}/api/users/`;
+import API_BASE_URL from '../config';
+const API_URL = `${API_BASE_URL}/api/users/`;
 
 function Users() {
   const [users, setUsers] = useState([]);

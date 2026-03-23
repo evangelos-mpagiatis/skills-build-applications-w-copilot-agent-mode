@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BASE_URL from '../config';
 
-const API_URL = `${BASE_URL}/api/leaderboard/`;
+import API_BASE_URL from '../config';
+const API_URL = `${API_BASE_URL}/api/leaderboard/`;
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -31,8 +32,8 @@ function Leaderboard() {
         <tbody>
           {leaderboard.map((entry, index) => (
             <tr key={entry._id || entry.id || index}>
-              <td>{entry.user}</td>
-              <td>{entry.score}</td>
+              <td>{entry.user?.username || 'Unknown'}</td>
+              <td>{entry.points}</td>
             </tr>
           ))}
         </tbody>

@@ -1,6 +1,6 @@
-const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
-const BASE_URL = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
+const codespace = process.env.REACT_APP_CODESPACE_NAME;
+const API_BASE_URL = codespace
+  ? `https://${codespace}-8000.app.github.dev`
   : 'http://localhost:8000';
 
-export default BASE_URL;
+export default API_BASE_URL;
